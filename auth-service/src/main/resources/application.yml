@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: auth-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hotelDB
+
+server:
+  port: 8081
+
+jwt:
+  # Base64-encoded 256-bit secret — change this in production
+  secret: dGhpcyBpcyBhIHZlcnkgc2VjdXJlIHNlY3JldCBrZXkgZm9yIGhvdGVsIGJvb2tpbmcgc3lzdGVt
+  expiration: 86400000   # 24 hours in milliseconds
