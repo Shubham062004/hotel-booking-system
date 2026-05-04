@@ -1,0 +1,82 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .toolbar-title {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .spacer { flex: 1; }
+}
+
+.content {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a237e;
+}
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.hotel-card {
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.dates-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #666;
+  margin: 12px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.no-dates {
+  color: #999;
+  font-style: italic;
+}
+
+.date-select {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  margin-top: 80px;
+
+  mat-icon { font-size: 64px; height: 64px; width: 64px; }
+  p { font-size: 1.1rem; }
+}

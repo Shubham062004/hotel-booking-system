@@ -1,0 +1,60 @@
+<mat-toolbar color="primary" class="toolbar">
+  <mat-icon>hotel</mat-icon>
+  <span class="toolbar-title">Hotel Booking</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="logout()" matTooltip="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <h1 class="page-title">Available Hotels</h1>
+
+  <div *ngIf="loading" class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading && hotels.length === 0" class="empty-state">
+    <mat-icon>hotel_class</mat-icon>
+    <p>No hotels available at the moment.</p>
+  </div>
+
+  <div class="hotel-grid" *ngIf="!loading && hotels.length > 0">
+    <mat-card class="hotel-card" *ngFor="let hotel of hotels">
+      <mat-card-header>
+        <mat-icon mat-card-avatar color="primary">hotel</mat-icon>
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <mat-card-subtitle>${{ hotel.price | number:'1.2-2' }} / night</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="dates-label">Available Dates</p>
+        <div class="chips-row" *ngIf="hotel.availableDates.length > 0">
+          <mat-chip *ngFor="let d of hotel.availableDates">{{ d }}</mat-chip>
+        </div>
+        <p *ngIf="hotel.availableDates.length === 0" class="no-dates">
+          No dates available
+        </p>
+
+        <mat-form-field appearance="outline" class="date-select" *ngIf="hotel.availableDates.length > 0">
+          <mat-label>Select a date</mat-label>
+          <mat-select [(ngModel)]="selectedDate[hotel.id]">
+            <mat-option *ngFor="let d of hotel.availableDates" [value]="d">{{ d }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!selectedDate[hotel.id] || bookingInProgress[hotel.id]"
+          (click)="book(hotel)"
+        >
+          <mat-spinner diameter="18" *ngIf="bookingInProgress[hotel.id]"></mat-spinner>
+          <span *ngIf="!bookingInProgress[hotel.id]">Book Now</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
