@@ -2,81 +2,147 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
   .toolbar-title {
-    margin-left: 8px;
+    margin-left: 10px;
     font-size: 1.2rem;
     font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
   .spacer { flex: 1; }
 }
 
+// ── Page layout ────────────────────────────────────────────────────────────
 .content {
   max-width: 1100px;
-  margin: 32px auto;
-  padding: 0 16px;
+  margin: 36px auto;
+  padding: 0 20px;
 }
 
 .page-title {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 24px;
   color: #1a237e;
+  margin-bottom: 28px;
 }
 
+// ── Hotel grid ─────────────────────────────────────────────────────────────
 .hotel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 28px;
 }
 
+// ── Hotel card ─────────────────────────────────────────────────────────────
 .hotel-card {
-  border-radius: 12px;
-  transition: box-shadow 0.2s;
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  mat-card-header {
+    padding-bottom: 8px;
+  }
+
+  mat-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 }
 
-.dates-label {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: #666;
-  margin: 12px 0 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.hotel-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8eaf6;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+
+  mat-icon {
+    color: #3f51b5;
+    font-size: 24px;
+  }
 }
 
-.chips-row {
+.price-tag {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #3f51b5 !important;
+
+  .per-night {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #777;
+  }
+}
+
+// ── Availability row ───────────────────────────────────────────────────────
+.availability-row {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
-  margin-bottom: 12px;
+  margin: 12px 0 16px;
+  font-size: 0.9rem;
+  color: #444;
+
+  .avail-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
 }
 
 .no-dates {
-  color: #999;
+  color: #b71c1c;
   font-style: italic;
 }
 
-.date-select {
+// ── Datepicker ─────────────────────────────────────────────────────────────
+.date-picker {
   width: 100%;
-  margin-top: 8px;
 }
 
+// ── Book button ────────────────────────────────────────────────────────────
+.book-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  min-width: 130px;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  .btn-spinner {
+    display: inline-block;
+  }
+}
+
+// ── States ─────────────────────────────────────────────────────────────────
 .spinner-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .empty-state {
   text-align: center;
-  color: #999;
-  margin-top: 80px;
+  color: #aaa;
+  margin-top: 100px;
 
-  mat-icon { font-size: 64px; height: 64px; width: 64px; }
-  p { font-size: 1.1rem; }
+  mat-icon {
+    font-size: 72px;
+    height: 72px;
+    width: 72px;
+  }
+
+  p {
+    font-size: 1.15rem;
+    margin-top: 12px;
+  }
 }
